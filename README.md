@@ -2,7 +2,7 @@
 
 This project provides a set of fluent APIs to simplify the handling of structs in .NET.
 
-You wasted way to much of your lifetime doing `X1 + ((Width1 - Width2) / 2)` to center content.
+You've wasted too much lifetime centering stuff with `X1 + ((Width1 - Width2) / 2)`.
 
 ## Use cases
 
