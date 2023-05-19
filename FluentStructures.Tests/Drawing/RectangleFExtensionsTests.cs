@@ -322,12 +322,12 @@ namespace FluentStructures.Tests.Drawing
             }
         }
 
-        public class AddMethods : RectangleFExtensionsTests
+        public class WithAdditionalMethods : RectangleFExtensionsTests
         {
             [Test]
             public void Can_Be_Used_To_Add_X()
             {
-                var rect = _rect.AddX(10.1f);
+                var rect = _rect.WithAdditionalX(10.1f);
 
                 rect.X.Should().Be(1.1f + 10.1f);
                 rect.Y.Should().Be(2.2f);
@@ -338,7 +338,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Y()
             {
-                var rect = _rect.AddY(10.1f);
+                var rect = _rect.WithAdditionalY(10.1f);
 
                 rect.X.Should().Be(1.1f);
                 rect.Y.Should().Be(2.2f + 10.1f);
@@ -349,7 +349,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Width()
             {
-                var rect = _rect.AddWidth(10.1f);
+                var rect = _rect.WithAdditionalWidth(10.1f);
 
                 rect.X.Should().Be(1.1f);
                 rect.Y.Should().Be(2.2f);
@@ -360,7 +360,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Height()
             {
-                var rect = _rect.AddHeight(10.1f);
+                var rect = _rect.WithAdditionalHeight(10.1f);
 
                 rect.X.Should().Be(1.1f);
                 rect.Y.Should().Be(2.2f);
@@ -371,7 +371,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Left()
             {
-                var rect = _rect.AddLeft(10.1f);
+                var rect = _rect.WithAdditionalLeft(10.1f);
 
                 rect.X.Should().Be(1.1f + 10.1f);
                 rect.Y.Should().Be(2.2f);
@@ -382,7 +382,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Top()
             {
-                var rect = _rect.AddTop(10.1f);
+                var rect = _rect.WithAdditionalTop(10.1f);
 
                 rect.X.Should().Be(1.1f);
                 rect.Y.Should().Be(2.2f + 10.1f);
@@ -393,7 +393,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Chained()
             {
-                var rect = _rect.AddX(10.1f).AddHeight(10.1f).AddLeft(1.1f).AddTop(1.2f);
+                var rect = _rect.WithAdditionalX(10.1f).WithAdditionalHeight(10.1f).WithAdditionalLeft(1.1f).WithAdditionalTop(1.2f);
 
                 rect.X.Should().Be(1.1f + 10.1f + 1.1f);
                 rect.Y.Should().Be(2.2f + 1.2f);

@@ -68,12 +68,12 @@ namespace FluentStructures.Tests.Drawing
             }
         }
 
-        public class AddMethods : PointFExtensionsTests
+        public class WithAdditionalMethods : PointFExtensionsTests
         {
             [Test]
             public void Can_Be_Used_To_Add_X()
             {
-                var point = _point.AddX(10.1f);
+                var point = _point.WithAdditionalX(10.1f);
 
                 point.X.Should().Be(1.1f + 10.1f);
                 point.Y.Should().Be(2.2f);
@@ -82,7 +82,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Set_Y()
             {
-                var point = _point.AddY(10.1f);
+                var point = _point.WithAdditionalY(10.1f);
 
                 point.X.Should().Be(1.1f);
                 point.Y.Should().Be(2.2f + 10.1f);
@@ -91,7 +91,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Chained()
             {
-                var point = _point.AddX(10.1f).AddY(11.1f);
+                var point = _point.WithAdditionalX(10.1f).WithAdditionalY(11.1f);
 
                 point.X.Should().Be(1.1f + 10.1f);
                 point.Y.Should().Be(2.2f + 11.1f);

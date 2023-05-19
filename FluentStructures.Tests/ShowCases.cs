@@ -13,7 +13,68 @@ namespace FluentStructures.Tests
     public class ShowCases
     {
         [Test]
-        public void Case_Middle_Center()
+        public void Moving_Points()
+        {
+			//   (p1)───────────────────────────────(p2)
+			//                                       │
+			//                                       │
+			//                                       │   +50px
+			//                                       │
+			//                                       │
+			//                         (p4)─────────(p3)
+            //                               -33px
+
+			// traditional
+			var p1 = new Point(10, 10);
+            var p2 = new Point(100, p1.Y);
+            var p3 = new Point(p2.X, p2.Y + 50);
+			var p4 = new Point(p3.X - 33, p3.Y);
+
+			p3.Y.Should().Be(60);
+            p4.X.Should().Be(67);
+
+            // fluent
+            p1 = new Point(10, 10);
+            p2 = p1.WithX(100);
+			p3 = p2.WithAdditionalY(50);
+            p4 = p3.WithAdditionalX(-33);
+
+			p3.Y.Should().Be(60);
+            p4.X.Should().Be(67);
+		}
+
+		[Test]
+		public void Landmarks()
+		{
+			//    ┌──────────────────────────────────┐
+			//    │                                  │
+			//    │                                  │
+			//    │              (p1)                │
+			//    │                                  │
+			//    │                                  │
+			//    └──────────────(p2)────────────────┘
+
+			var rect = new Rectangle(100, 100, 300, 150);
+
+            var p1 = new Point(rect.Left + (rect.Width / 2), rect.Top + (rect.Height / 2));
+            var p2 = new Point(rect.Left + (rect.Width / 2), rect.Bottom);
+
+            p1.X.Should().Be(250);
+            p1.Y.Should().Be(175);
+			p2.X.Should().Be(250);
+			p2.Y.Should().Be(250);
+
+			p1 = rect.GetLandmark(ContentAlignment.MiddleCenter);
+            p2 = rect.GetLandmark(ContentAlignment.BottomCenter);
+
+			p1.X.Should().Be(250);
+			p1.Y.Should().Be(175);
+			p2.X.Should().Be(250);
+			p2.Y.Should().Be(250);
+		}
+
+		[Test]
+        public void Align_Middle_Center()
         {
             //    ┌──────────────────────────────────┐
             //    │                                  │
@@ -32,7 +93,7 @@ namespace FluentStructures.Tests
                 userImage.Width,
                 userImage.Height);
 
-            var fluentCalculation = cellBounds.Align(userImage.Size, ContentAlignment.MiddleCenter);
+            var fluentCalculation = cellBounds.Embed(userImage.Size, ContentAlignment.MiddleCenter);
 
             foreach (var r in new[] { traditionalCalculation, fluentCalculation })
             {
@@ -44,7 +105,7 @@ namespace FluentStructures.Tests
         }
 
         [Test]
-        public void Case_Middle_Right()
+        public void Align_Middle_Right()
         {
             //    ┌──────────────────────────────────┐
             //    │                                  │
@@ -64,8 +125,8 @@ namespace FluentStructures.Tests
                 userImage.Height);
 
             var fluentCalculation = cellBounds
-                .Align(userImage.Size, ContentAlignment.MiddleRight)
-                .AddLeft(-10);
+                .Embed(userImage.Size, ContentAlignment.MiddleRight)
+                .WithAdditionalLeft(-10);
 
             foreach (var r in new[] { traditionalCalculation, fluentCalculation })
             {

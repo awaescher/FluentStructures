@@ -322,12 +322,12 @@ namespace FluentStructures.Tests.Drawing
             }
         }
 
-        public class AddMethods : RectangleExtensionsTests
+        public class WithAdditionalMethods : RectangleExtensionsTests
         {
             [Test]
             public void Can_Be_Used_To_Add_X()
             {
-                var rect = _rect.AddX(10);
+                var rect = _rect.WithAdditionalX(10);
 
                 rect.X.Should().Be(1 + 10);
                 rect.Y.Should().Be(2);
@@ -338,7 +338,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Y()
             {
-                var rect = _rect.AddY(10);
+                var rect = _rect.WithAdditionalY(10);
 
                 rect.X.Should().Be(1);
                 rect.Y.Should().Be(2 + 10);
@@ -349,7 +349,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Width()
             {
-                var rect = _rect.AddWidth(10);
+                var rect = _rect.WithAdditionalWidth(10);
 
                 rect.X.Should().Be(1);
                 rect.Y.Should().Be(2);
@@ -360,7 +360,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Height()
             {
-                var rect = _rect.AddHeight(10);
+                var rect = _rect.WithAdditionalHeight(10);
 
                 rect.X.Should().Be(1);
                 rect.Y.Should().Be(2);
@@ -371,7 +371,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Left()
             {
-                var rect = _rect.AddLeft(10);
+                var rect = _rect.WithAdditionalLeft(10);
 
                 rect.X.Should().Be(1 + 10);
                 rect.Y.Should().Be(2);
@@ -382,7 +382,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Top()
             {
-                var rect = _rect.AddTop(10);
+                var rect = _rect.WithAdditionalTop(10);
 
                 rect.X.Should().Be(1);
                 rect.Y.Should().Be(2 + 10);
@@ -393,7 +393,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Chained()
             {
-                var rect = _rect.AddX(10).AddHeight(10).AddLeft(1).AddTop(2);
+                var rect = _rect.WithAdditionalX(10).WithAdditionalHeight(10).WithAdditionalLeft(1).WithAdditionalTop(2);
 
                 rect.X.Should().Be(1 + 10 + 1);
                 rect.Y.Should().Be(2 + 2);
@@ -415,7 +415,7 @@ namespace FluentStructures.Tests.Drawing
             [TestCase(ContentAlignment.BottomRight, 33 + 100, 66 + 400)]
             public void Returns_Relative_Point(ContentAlignment alignment, int expectedX, int expectedY)
             {
-                var point = new Rectangle(33, 66, 100, 400).GetPoint(alignment);
+                var point = new Rectangle(33, 66, 100, 400).GetLandmark(alignment);
 
                 point.X.Should().Be(expectedX);
                 point.Y.Should().Be(expectedY);
@@ -441,7 +441,7 @@ namespace FluentStructures.Tests.Drawing
             {
                 var outer = new Rectangle(100, 120, 500, 300);
                 var inner = new Size(100, 120);
-                var centeredRectangle = outer.Align(inner, alignment);
+                var centeredRectangle = outer.Embed(inner, alignment);
 
                 centeredRectangle.X.Should().Be(100 + expectedRectX);
                 centeredRectangle.Y.Should().Be(120 + expectedRectY);

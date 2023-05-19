@@ -124,12 +124,12 @@ namespace FluentStructures.Tests.Drawing
             }
         }
 
-        public class AddMethods : ColorExtensionsTests
+        public class WithAdditionalMethods : ColorExtensionsTests
         {
             [Test]
             public void Can_Be_Used_To_Add_Alpha()
             {
-                var color = _color.AddAlpha(100);
+                var color = _color.WithAdditionalAlpha(100);
 
                 color.A.Should().Be(10 + 100);
                 color.R.Should().Be(20);
@@ -140,7 +140,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Red()
             {
-                var color = _color.AddRed(100);
+                var color = _color.WithAdditionalRed(100);
 
                 color.A.Should().Be(10);
                 color.R.Should().Be(20 + 100);
@@ -151,7 +151,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Green()
             {
-                var color = _color.AddGreen(100);
+                var color = _color.WithAdditionalGreen(100);
 
                 color.A.Should().Be(10);
                 color.R.Should().Be(20);
@@ -162,7 +162,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Add_Blue()
             {
-                var color = _color.AddBlue(100);
+                var color = _color.WithAdditionalBlue(100);
 
                 color.A.Should().Be(10);
                 color.R.Should().Be(20);
@@ -173,7 +173,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Chained()
             {
-                var color = _color.AddAlpha(100).AddRed(120);
+                var color = _color.WithAdditionalAlpha(100).WithAdditionalRed(120);
 
                 color.A.Should().Be(10 + 100);
                 color.R.Should().Be(20 + 120);

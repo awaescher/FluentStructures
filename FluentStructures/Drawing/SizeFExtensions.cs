@@ -9,13 +9,13 @@ namespace FluentStructures.Drawing
 
         public static SizeF WithWidth(this SizeF s, Func<float, float> modifier) => s.WithWidth(modifier(s.Width));
 
-        public static SizeF AddWidth(this SizeF s, float value) => s.WithWidth(w => w + value);
+        public static SizeF WithAdditionalWidth(this SizeF s, float value) => s.WithWidth(w => w + value);
 
         public static SizeF WithHeight(this SizeF s, float value) => new SizeF(s.Width, value);
 
         public static SizeF WithHeight(this SizeF s, Func<float, float> modifier) => s.WithHeight(modifier(s.Height));
 
-        public static SizeF AddHeight(this SizeF s, float value) => s.WithHeight(h => h + value);
+        public static SizeF WithAdditionalHeight(this SizeF s, float value) => s.WithHeight(h => h + value);
 
         public static PointF GetPoint(this SizeF s, ContentAlignment alignment)
         {
@@ -66,7 +66,7 @@ namespace FluentStructures.Drawing
             else if (alignment.IsBottom())
                 addY = -1f * sizeToAlign.Height;
 
-            var location = s.GetPoint(alignment).AddX(addX).AddY(addY);
+            var location = s.GetPoint(alignment).WithAdditionalX(addX).WithAdditionalY(addY);
             return new RectangleF(location, sizeToAlign);
         }
     }

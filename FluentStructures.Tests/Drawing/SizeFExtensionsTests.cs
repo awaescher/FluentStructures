@@ -68,12 +68,12 @@ namespace FluentStructures.Tests.Drawing
             }
         }
 
-        public class AddMethods : SizeFExtensionsTests
+        public class WithAdditionalMethods : SizeFExtensionsTests
         {
             [Test]
             public void Can_Be_Used_To_Add_Width()
             {
-                var size = _size.AddWidth(10.1f);
+                var size = _size.WithAdditionalWidth(10.1f);
 
                 size.Width.Should().Be(1.1f + 10.1f);
                 size.Height.Should().Be(2.2f);
@@ -82,7 +82,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Used_To_Set_Height()
             {
-                var size = _size.AddHeight(10.1f);
+                var size = _size.WithAdditionalHeight(10.1f);
 
                 size.Width.Should().Be(1.1f);
                 size.Height.Should().Be(2.2f + 10.1f);
@@ -91,7 +91,7 @@ namespace FluentStructures.Tests.Drawing
             [Test]
             public void Can_Be_Chained()
             {
-                var size = _size.AddWidth(10.1f).AddHeight(11.1f);
+                var size = _size.WithAdditionalWidth(10.1f).WithAdditionalHeight(11.1f);
 
                 size.Width.Should().Be(1.1f + 10.1f);
                 size.Height.Should().Be(2.2f + 11.1f);
