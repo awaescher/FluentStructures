@@ -3,13 +3,28 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Fluent extensions for structures in .NET</Title>
+    <Title>Fluent APIs to simplify the handling of structs in .NET </Title>
     <Copyright>$(Authors)</Copyright>
     <PackageIcon>icon.png</PackageIcon>
+    <Description>This project provides a set of fluent APIs to simplify the handling of structs in .NET.
+You spent too much time centering stuff with X1 + ((Width1 - Width2) / 2).</Description>
+    <PackageProjectUrl>https://github.com/awaescher/FluentStructures</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/awaescher/FluentStructures</RepositoryUrl>
+    <PackageTags>fluent;fluent-api;structs;structures</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
